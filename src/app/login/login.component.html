@@ -1,42 +1,81 @@
-<div class="container">
+<div *ngIf="mensagens">
+    <app-alerta [mensagens]="mensagens"></app-alerta>
 </div>
 <div class="container centralizado">
-    <form (submit)="logar()">
-        <div class="form-login">
-            <div class="row justify-content-md-center align-items-center">
-                <div class="col-sm-4 form-head">
-                    <img src="../../assets/img/feira-virtual.png" alt="IMG de login">
-                </div>
-            </div>
-            <div class="row justify-content-md-center align-items-center">
-                <div class="col-sm-4 form-boddy">
-                    <div class="form-group">
-                        <label class="col-form-label" for="email">E-mail</label>
-                        <input class="form-control" type="text" name="email" id="email" [(ngModel)]="usuario.email">
+    <div class="row">
+        <div class="col-sm-6">
+            <form (submit)="logar()" method="POST">
+                <div class="form-login">
+                    <div class="">
+                        <div class="form-head">
+                            <img src="../../assets/img/feira-virtual.png" alt="IMG de login">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-form-label" for="senha">Senha</label>
-                        <input class="form-control" type="password" name="senha" id="senha" [(ngModel)]="usuario.senha">
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-primary material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    more_vert
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Cadastrar</a>
-                                    <a class="dropdown-item" href="#">Esqueci minha senha</a>
+                    <div class="">
+                        <div class="form-boddy">
+                            <div class="form-group">
+                                <label class="col-form-label" for="email">E-mail</label>
+                                <input class="form-control" type="text" name="email" id="email" [(ngModel)]="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label" for="senha">Senha</label>
+                                <input class="form-control" type="password" name="senha" id="senha" [(ngModel)]="senha">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary material-icons" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            more_vert
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" [routerLink]="['/cadastrar']" href="#">Cadastrar</a>
+                                            <a class="dropdown-item" href="#">Esqueci minha senha</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <button class="btn btn-success" type="submit" style="float: right;">Entrar</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <button class="btn btn-success" type="submit" style="float: right;">Entrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-6">
+            <form (submit)="salvarUsuarioPessoa()">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="nome" class="col-form-label">Nome</label>
+                            <input type="text" name="nome" id="nome" [(ngModel)]="pessoa.nome" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="sobrenome" class="col-form-label">Sobrenome</label>
+                            <input type="text" name="sobrenome" id="sobrenome" [(ngModel)]="pessoa.sobrenome" class="form-control">
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="emailCad" class="col-form-label">E-mail</label>
+                            <input type="text" name="emailCad" id="emailCad" [(ngModel)]="usuario.email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="senhaCad" class="col-form-label">Senha</label>
+                            <input type="password" id="senhaCad" name="senhaCad" [(ngModel)]="usuario.senha" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block">Salvar</button>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

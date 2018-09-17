@@ -1,0 +1,46 @@
+<div class="container">
+    <form (submit)="salvar()" method="POST">
+        <div class="row">
+            <div class="col-sm" style="margin-top: 25px">
+                <div class="form-group">
+                    <label for="nomeFantasia">Nome fantasia / Loja</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa.nomeFantasia" name="nomeFantasia" id="nomeFantasia">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pessoaJuridica" id="pessoaJuridica" value="juridica" [(ngModel)]="pessoaJuridicaFisica"
+                                (ngModelChange)="pJF('juridica')">
+                            <label class="form-check-label" for="pessoaJuridica">
+                                Pessoa jurídica
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pessoaFisica" id="pessoaFisica" value="fisica" [(ngModel)]="pessoaJuridicaFisica"
+                                (ngModelChange)="pJF('fisica')">
+                            <label class="form-check-label" for="pessoaFisica">
+                                Pessoa física
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="pessoaJuridicaFisica == 'fisica'">
+                    <label for="numeroCpf">CPF</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa.numeroCpf" name="numeroCpf" id="numeroCpf" mask="999.999.999-99">
+                </div>
+                <div class="form-group" *ngIf="pessoaJuridicaFisica == 'juridica'">
+                    <label for="numeroCnpj">CNPJ</label>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa.numeroCnpj" name="numeroCnpj" id="numeroCnpj" >
+                </div>
+            </div>
+        </div>
+
+        <app-endereco [(endereco)]="endereco" [vendedor]="vendedor"></app-endereco>
+
+        <button class="btn btn-primary" type="submit">Avançar</button>
+    </form>
+</div>

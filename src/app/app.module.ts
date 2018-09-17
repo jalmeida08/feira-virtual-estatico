@@ -5,6 +5,12 @@ import { routing } from './app.routes';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './usuario/usuario.module';
 import { LoginModule } from './login/login.module';
+import { PessoaModule } from './pessoa/pessoa.module';
+import { CookieService } from 'ngx-cookie-service';
+import { DataService } from './data/data.service';
+import { AlertaModule } from './_directive/_alert/alerta.module';
+import { LojaModule } from './loja/loja.module';
+import { EnderecoModule } from './_directive/_endereco/endereco.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +22,15 @@ import { LoginModule } from './login/login.module';
     HttpModule,
     LoginModule,
     UsuarioModule,
+    PessoaModule,
+    AlertaModule,
+    LojaModule,
+    EnderecoModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

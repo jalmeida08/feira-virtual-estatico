@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Usuario } from '../usuario/usuario';
+import { Usuario } from '../_model/usuario';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UsuarioLogado } from './usuarioLogado';
 
 @Injectable()
 export class LoginService {
@@ -17,7 +16,7 @@ export class LoginService {
         this._http = _http;
     }
 
-    public login(usuario: Usuario): Observable<UsuarioLogado> {
+    public login(usuario: Usuario): Observable<any> {
         return this._http
             .post(
                 this._url + "login",
