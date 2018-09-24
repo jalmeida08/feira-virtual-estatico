@@ -3,11 +3,11 @@ import { Http, Headers } from '@angular/http';
 import { Usuario } from '../_model/usuario';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { uriBase } from '../data/uriBase';
 
 @Injectable()
 export class LoginService {
 
-    private _url = "http://localhost:8080/usuario/";
     private _headers: Headers;
 
     constructor(
@@ -19,7 +19,7 @@ export class LoginService {
     public login(usuario: Usuario): Observable<any> {
         return this._http
             .post(
-                this._url + "login",
+                uriBase.uri + "usuario/login",
                 usuario,
                 { headers: this._headers }
             ).pipe(

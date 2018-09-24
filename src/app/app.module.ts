@@ -11,6 +11,7 @@ import { DataService } from './data/data.service';
 import { AlertaModule } from './_directive/_alert/alerta.module';
 import { LojaModule } from './loja/loja.module';
 import { EnderecoModule } from './_directive/_endereco/endereco.module';
+import { CategoriaModule } from './_administracao/categoria/categoria.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EnderecoModule } from './_directive/_endereco/endereco.module';
     PessoaModule,
     AlertaModule,
     LojaModule,
-    EnderecoModule
+    EnderecoModule,
+    CategoriaModule,
   ],
   providers: [
     CookieService,

@@ -1,0 +1,22 @@
+<div class="container">
+    <div *ngIf="mensagens">
+        <app-alerta [mensagens]="mensagens"></app-alerta>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <form (submit)="salvar()">
+                <div class="form-group">
+                    <label for="categoria" class="col-form-label">Categoria</label>
+                    <input class="form-control" type="text" name="categoria" id="categoria" [(ngModel)]="categoria.categoria">
+                </div>
+                <button class="btn btn-dark">Salvar</button>
+            </form>
+        </div>
+        <div class="col-sm" style="max-height: 200px; overflow: auto; ">
+            <ul>
+                <li *ngFor="let cat of categorias">{{cat.categoria}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
