@@ -8,6 +8,7 @@ import { VendedorCadastroComponent } from './loja/_visao-vendedor/cadastro/vende
 import { ProdutoComponent } from './loja/_visao-vendedor/produto/produto.component';
 import { ManterProdutoComponent } from './loja/_visao-vendedor/produto/cadastro/manter-produto.component';
 import { CategoriaCadastroComponent } from './_administracao/categoria/formularios/categoria-cadastro.component';
+import { PermissaoComponent } from './_administracao/acesso/permissao.component';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -19,6 +20,8 @@ const appRoutes: Routes = [
     { path: 'produto', component: ProdutoComponent },
     { path: 'produto/novo', component: ManterProdutoComponent },
     { path: 'categoria/novo', component: CategoriaCadastroComponent },
+
+    { path: 'acesso', component: PermissaoComponent },
     /*{ path: 'pessoa', component: PessoaComponent },
     { path: 'pessoa/cadastrar', component: PessoaFormComponent },
     { path: 'pessoa/form/:id', component: PessoaFormComponent }, */

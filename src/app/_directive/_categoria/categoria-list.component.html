@@ -1,0 +1,38 @@
+<div class="row justify-content-center" style="margin-right:0 !important">
+    <div class="col-sm-3">
+        <div style="max-height: 200px; overflow: auto; ">
+            <ul>
+                <span (click)="buscarPorId(cat)" *ngFor="let cat of categorias">
+                    <li [ngClass]="{'active': categoriaSelecionada[0] == cat}">
+                        {{cat.categoria}}
+                    </li>
+                </span>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-sm-3" *ngIf="categoriaIsSelected">
+        <div style="max-height: 200px; overflow: auto; ">
+            <ul>
+                <li>{{categoria.categoria}}</li>
+                <span (click)="setarSubcategoria(subCat)" *ngFor="let subCat of categoria.subcategoria">
+                    <li [ngClass]="{'active': subcategoriaSelecionada == subCat}">
+                        {{subCat.subcategoria}}
+                    </li>
+                </span>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-sm-3" *ngIf="categoriaIsGenero">
+        <div style="max-height: 200px; overflow: auto; ">
+            <ul>
+                <span (click)="setarCategoriaGenero(catGen)" *ngFor="let catGen of categoriaGenero">
+                    <li [ngClass]="{'active': categoriaSelecionada[1] == catGen}">
+                        {{catGen.categoria}}
+                    </li>
+                </span>
+            </ul>
+        </div>
+    </div>
+</div>

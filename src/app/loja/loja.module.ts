@@ -6,10 +6,12 @@ import { VendedorCadastroComponent } from './_visao-vendedor/cadastro/vendedor-c
 import { FormsModule } from '@angular/forms';
 import { EnderecoModule } from '../_directive/_endereco/endereco.module';
 import {NgxMaskModule} from 'ngx-mask';
-import { CookieService } from 'ngx-cookie-service';
 import { ProdutoComponent } from './_visao-vendedor/produto/produto.component';
 import { ProdutoService } from './_visao-vendedor/produto/produto.service';
 import { ManterProdutoComponent } from './_visao-vendedor/produto/cadastro/manter-produto.component';
+import { CategoriaModule } from '../_administracao/categoria/categoria.module';
+import { ImagemModule } from '../_directive/_foto/imagem.module';
+
 
 @NgModule({
     declarations: [
@@ -23,6 +25,8 @@ import { ManterProdutoComponent } from './_visao-vendedor/produto/cadastro/mante
         FormsModule,
         EnderecoModule,
         NgxMaskModule.forRoot(),
+        CategoriaModule,
+        ImagemModule
     ],
     exports: [],
     providers: [

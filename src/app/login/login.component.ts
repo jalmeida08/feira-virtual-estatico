@@ -87,25 +87,6 @@ export class LoginComponent implements OnInit {
 
             }, error => { console.log('erro ao salvar usuario ', error) });
 
-        /* this._pessoaService
-            .salvar(this.pessoa)
-            .subscribe(res => {
-                this.usuario.pessoa = res.entity;
-                this._usuarioService
-                    .salvar(this.usuario)
-                    .subscribe(res => {
-                        this._loginService
-                            .login(this.usuario)
-                            .subscribe(res => {
-                                this.cookieService.deleteAll();
-                                this.redirecionamento(res);
-                                this.usuario = new Usuario();
-                            });
-                    });
-            }, error => {
-                console.log("pessoa erro--> ", error)
-            }); */
-
     }
 
     public redirecionamento(response) {
@@ -121,6 +102,7 @@ export class LoginComponent implements OnInit {
     public registrarSessao(response) {
         this.cookieService.set('uti', response.idUsuario)
         this.cookieService.set('utk', response.token);
+        this.cookieService.set('uta', response.permissoes);
     }
 
     ngOnInit(): void {

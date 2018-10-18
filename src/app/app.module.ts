@@ -12,6 +12,9 @@ import { AlertaModule } from './_directive/_alert/alerta.module';
 import { LojaModule } from './loja/loja.module';
 import { EnderecoModule } from './_directive/_endereco/endereco.module';
 import { CategoriaModule } from './_administracao/categoria/categoria.module';
+import { SubcategoriaModule } from './_administracao/subcategoria/subcategoria.module';
+import { ImagemModule } from './_directive/_foto/imagem.module';
+import { PermissaoModule } from './_administracao/acesso/permissao.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { CategoriaModule } from './_administracao/categoria/categoria.module';
     LojaModule,
     EnderecoModule,
     CategoriaModule,
+    SubcategoriaModule,
+    ImagemModule,
+    PermissaoModule
   ],
   providers: [
     CookieService,

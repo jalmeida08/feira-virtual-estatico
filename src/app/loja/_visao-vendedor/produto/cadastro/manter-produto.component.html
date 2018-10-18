@@ -1,0 +1,362 @@
+<div>
+    <form (submit)="salvar()">
+        <!-- 
+            ============================================================================================
+                                            CATEGORIA E SUB CATEGORIA
+            ============================================================================================
+         -->
+        <div *ngIf="isCategoria" style="margin-top: 8%">
+            <app-categoria-list
+                (emitterCategoria)="receberCategoria($event)"
+                (emitterAlertaDisabledBtn)="receverAlertaContinuidade($event)">
+            </app-categoria-list>
+
+            <div class="row justify-content-md-center top-min">
+                <button [disabled]="isCategoriaSelected" class="btn btn-primary right" (click)="showProduto()" *ngIf="isCategoria"
+                    style="float: right">Proximo</button>
+            </div>
+        </div>
+
+
+        <div *ngIf="isProduto">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="titulo" class="col-form-label">Titulo</label>
+                        <input class="form-control" type="text" name="titulo" id="titulo" [(ngModel)]="produto.titulo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="marca" class="col-form-label">Marca</label>
+                        <input class="form-control" type="text" name="marca" id="marca" [(ngModel)]="produto.marca">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="modelo" class="col-form-label">Modelo</label>
+                        <input class="form-control" type="text" name="modelo" id="modelo" [(ngModel)]="produto.modelo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="descricao" class="col-form-label">Descrição</label>
+                        <input class="form-control" type="text" name="descricao" id="descricao" [(ngModel)]="produto.descricao">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="cor" class="col-form-label">Cor</label>
+                        <input class="form-control" type="text" name="cor" id="cor" [(ngModel)]="produto.cor">
+                    </div>
+                </div>
+            </div>
+            <!-- 
+                ============================================================================================
+                =                                       TECNOLOGIA                                         =
+                ============================================================================================
+            -->
+            <div *ngIf="categoria[0].categoria == 'Informática e eletrônicos' || categoria[0].categoria == 'Celular e acessórios'">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tipoCorrente" class="col-form-label">Tipo de corrente</label>
+                            <input class="form-control" type="text" name="tipoCorrente" id="tipoCorrente" [(ngModel)]="produto.tipoCorrente">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="capacidadeBateria" class="col-form-label">Capacidade da Bateria</label>
+                            <input class="form-control" type="text" name="capacidadeBateria" id="capacidadeBateria"
+                                [(ngModel)]="produto.capacidadeBateria">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tamanhoTela" class="col-form-label">Tamanho da Tela</label>
+                            <input class="form-control" type="text" name="tamanhoTela" id="tamanhoTela" [(ngModel)]="produto.tamanhoTela">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tipoResolucao" class="col-form-label">Tipo Resolução</label>
+                            <input class="form-control" type="text" name="tipoResolucao" id="tipoResolucao" [(ngModel)]="produto.tipoResolucao">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tipoTela" class="col-form-label">Tipo da Tela</label>
+                            <input class="form-control" type="text" name="tipoTela" id="tipoTela" [(ngModel)]="produto.tipoTela">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="resolucaoMaxima" class="col-form-label">Resolução Máxima</label>
+                            <input class="form-control" type="text" name="resolucaoMaxima" id="resolucaoMaxima"
+                                [(ngModel)]="produto.resolucaoMaxima">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="quantidadePortosHdmi" class="col-form-label">Quantida de Portas HDMI</label>
+                            <input class="form-control" type="text" name="quantidadePortosHdmi" id="quantidadePortosHdmi"
+                                [(ngModel)]="produto.quantidadePortosHdmi">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="quantidadePortasUsb" class="col-form-label">Quantida de Portas Usb</label>
+                            <input class="form-control" type="text" name="quantidadePortasUsb" id="quantidadePortasUsb"
+                                [(ngModel)]="produto.quantidadePortasUsb">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="memoriaInterna" class="col-form-label">Mémoria Interna</label>
+                            <input class="form-control" type="text" name="memoriaInterna" id="memoriaInterna"
+                                [(ngModel)]="produto.memoriaInterna">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="memoriaRam" class="col-form-label">Mémoria Ram</label>
+                            <input class="form-control" type="text" name="memoriaRam" id="memoriaRam" [(ngModel)]="produto.memoriaRam">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="sistemaOperacional" class="col-form-label">Sistema Operacional</label>
+                            <input class="form-control" type="text" name="sistemaOperacional" id="sistemaOperacional"
+                                [(ngModel)]="produto.sistemaOperacional">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="versaoSistemaOperacional" class="col-form-label">Versao do Sistema Operacional</label>
+                            <input class="form-control" type="text" name="versaoSistemaOperacional" id="versaoSistemaOperacional"
+                                [(ngModel)]="produto.versaoSistemaOperacional">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="velocidadeProcessador" class="col-form-label">Velocidade do Processador</label>
+                            <input class="form-control" type="text" name="velocidadeProcessador" id="velocidadeProcessador"
+                                [(ngModel)]="produto.velocidadeProcessador">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="familia" class="col-form-label">Familia</label>
+                            <input class="form-control" type="text" name="familia" id="familia" [(ngModel)]="produto.familia">
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="categoria[0].categoria == 'Celular e acessórios'">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="resolucaoCameraTraseira" class="col-form-label">Resolução Camera Traseira</label>
+                                <input class="form-control" type="text" name="resolucaoCameraTraseira" id="resolucaoCameraTraseira"
+                                    [(ngModel)]="produto.resolucaoCameraTraseira">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="resolucaoCameraFrontal" class="col-form-label">Resolução Camera Frontal</label>
+                                <input class="form-control" type="text" name="resolucaoCameraFrontal" id="resolucaoCameraFrontal"
+                                    [(ngModel)]="produto.resolucaoCameraFrontal">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="operadora" class="col-form-label">Operadora</label>
+                                <input class="form-control" type="text" name="operadora" id="operadora" [(ngModel)]="produto.operadora">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div *ngIf="false">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="altura" class="col-form-label">Altura</label>
+                            <input class="form-control" type="text" name="altura" id="altura" [(ngModel)]="produto.altura">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="profundidade" class="col-form-label">Profundidade</label>
+                            <input class="form-control" type="text" name="profundidade" id="profundidade" [(ngModel)]="produto.profundidade">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="dimensoes" class="col-form-label">Dimensões</label>
+                            <input class="form-control" type="text" name="dimensoes" id="dimensoes" [(ngModel)]="produto.dimensoes">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="peso" class="col-form-label">Peso</label>
+                            <input class="form-control" type="text" name="peso" id="peso" [(ngModel)]="produto.peso">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="false">
+                <!-- 
+                    ============================================================================================
+                                                    EQUIPAMENTOS DE SOM
+                    ============================================================================================
+                -->
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="quantidadeAltoFalante" class="col-form-label">Quantidade de Alto Falantes</label>
+                            <input class="form-control" type="text" name="quantidadeAltoFalante" id="quantidadeAltoFalante"
+                                [(ngModel)]="produto.quantidadeAltoFalante">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="potenciaMaximaAltoFalantes" class="col-form-label">Potência Máxima dos
+                                altoFalantes</label>
+                            <input class="form-control" type="text" name="potenciaMaximaAltoFalantes" id="potenciaMaximaAltoFalantes"
+                                [(ngModel)]="produto.potenciaMaximaAltoFalantes">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="modoSom" class="col-form-label">Modo Som</label>
+                            <input class="form-control" type="text" name="modoSom" id="modoSom" [(ngModel)]="produto.modoSom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="categoria[0].categoria == 'Roupas' || subcategoria.subcategoria == 'Roupa'">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tipoRoupa" class="col-form-label">Tipo de Roupa</label>
+                            <input class="form-control" type="text" name="tipoRoupa" id="tipoRoupa" [(ngModel)]="produto.tipoRoupa">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="materialRoupa" class="col-form-label">Material da Roupa</label>
+                            <input class="form-control" type="text" name="materialRoupa" id="materialRoupa" [(ngModel)]="produto.materialRoupa">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="false">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="temporada" class="col-form-label">Temporada</label>
+                            <input class="form-control" type="text" name="temporada" id="temporada" [(ngModel)]="produto.temporada">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="false">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="tamanho" class="col-form-label">Tamanho</label>
+                            <input class="form-control" type="text" name="tamanho" id="tamanho" [(ngModel)]="produto.tamanho">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <app-imagem></app-imagem>
+            </div>
+        </div>
+        <button *ngIf="isProduto">Salvar</button>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<div class="">
+    <div *ngIf="mensagens">
+        <app-alerta [mensagens]="mensagens"></app-alerta>
+    </div>
+    <form (submit)="salvar()">
+        <div class="form-group">
+            <label for="nomePermissao">Acesso</label>
+            <input class="form-control" type="text" name="nomePermissao" id="nomePermissao" [(ngModel)]="permissao.nomePermissao">
+        </div>
+        <button class="btn btn-primary">Salvar</button>
+    </form>
+</div>

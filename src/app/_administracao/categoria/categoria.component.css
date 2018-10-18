@@ -1,0 +1,4 @@
+ul{list-style: none}
+ul > span:hover {text-decoration: none; cursor: pointer}
+ul > span > li:hover{background-color: #ccc; width: 100%; }
+.active{background-color: #ccc; color:#000}

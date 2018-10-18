@@ -4,11 +4,11 @@ import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { Categoria } from '../../_model/categoria';
 import { uriBase } from '../../data/uriBase';
+import { Permissao } from '../../_model/permissao';
 
 @Injectable()
-export class CategoriaService {
+export class PermissaoService {
 
     private _headers: Headers;
     private _options: RequestOptions;
@@ -27,42 +27,35 @@ export class CategoriaService {
         this._headers.append('Authentication', this.cookieService.get('utk'));
     }
 
-    public salvar(categoria: Categoria): Observable<Response> {
+
+    public salvarAcesso(permissao: Permissao): Observable<Response> {
         this.construirHeader();
         return this._http
             .post(
-                uriBase.uri + 'categoria/',
-                categoria,
-                this._options
-            );
-    }
-
-    public listarCategoria(): Observable<Categoria[]> {
-        this.construirHeader();
-        return this._http
-            .get(uriBase.uri + 'categoria/',
-                this._options)
-            .pipe(
-                map(res => res.json())
-            );
-    }
-
-    public categoria(categoria: Categoria): Observable<Categoria> {
-        this.construirHeader();
-        return this._http
-            .get(uriBase.uri + 'categoria/' + categoria.idCategoria,
-                this._options)
-            .pipe(
-                map(res => res.json())
-            );
-    }
-
-    public salvarSubcategoriaInCategoria(categoria: Categoria): Observable<Response> {
-        this.construirHeader();
-        return this._http
-            .post(uriBase.uri + 'categoria/salvarSubcategoriaInCategoria',
-                categoria,
+                uriBase.uri + 'permissao/',
+                permissao,
                 this._options
             )
     }
+
+    public adicionarAcesso(idUsuario: string, idPermissao: string): Observable<Response> {
+        this.construirHeader();
+        return this._http
+            .get(
+                uriBase.uri + idUsuario + idPermissao,
+                this._options
+            )
+
+    }
+
+    public recuperarListaAcesso(): Observable<Permissao> {
+        this.construirHeader();
+        return this._http
+            .get(uriBase.uri)
+            .pipe(
+                map(res => res.json())
+            );
+    }
+
+
 }

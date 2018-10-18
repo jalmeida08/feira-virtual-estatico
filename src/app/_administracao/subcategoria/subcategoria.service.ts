@@ -6,9 +6,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Categoria } from '../../_model/categoria';
 import { uriBase } from '../../data/uriBase';
+import { Subcategoria } from '../../_model/subcategoria';
 
 @Injectable()
-export class CategoriaService {
+export class SubcategoriaService {
 
     private _headers: Headers;
     private _options: RequestOptions;
@@ -27,42 +28,29 @@ export class CategoriaService {
         this._headers.append('Authentication', this.cookieService.get('utk'));
     }
 
-    public salvar(categoria: Categoria): Observable<Response> {
+    public salvar(subcategoria: Subcategoria): Observable<any> {
         this.construirHeader();
         return this._http
             .post(
-                uriBase.uri + 'categoria/',
-                categoria,
-                this._options
-            );
+                uriBase.uri + 'subcategoria/',
+                subcategoria,
+                this._options)
+                .pipe(
+                    map(res => res.json())
+                );
+
     }
 
-    public listarCategoria(): Observable<Categoria[]> {
+    public listar(): Observable<Subcategoria[]> {
         this.construirHeader();
         return this._http
-            .get(uriBase.uri + 'categoria/',
+            .get(
+                uriBase.uri + 'subcategoria/',
                 this._options)
             .pipe(
                 map(res => res.json())
-            );
-    }
-
-    public categoria(categoria: Categoria): Observable<Categoria> {
-        this.construirHeader();
-        return this._http
-            .get(uriBase.uri + 'categoria/' + categoria.idCategoria,
-                this._options)
-            .pipe(
-                map(res => res.json())
-            );
-    }
-
-    public salvarSubcategoriaInCategoria(categoria: Categoria): Observable<Response> {
-        this.construirHeader();
-        return this._http
-            .post(uriBase.uri + 'categoria/salvarSubcategoriaInCategoria',
-                categoria,
-                this._options
             )
     }
+
+
 }
