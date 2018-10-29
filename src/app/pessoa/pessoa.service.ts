@@ -6,13 +6,14 @@ import { UsuarioLogado } from '../_model/usuario-logado';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Pessoa } from '../_model/pessoa';
+import { uriBase } from '../data/uriBase';
 
 @Injectable()
 export class PessoaService {
 
     private _headers: Headers;
     private _options: RequestOptions;
-    private _url: string = "http://localhost:8080/pessoa/";
+    // private _url: string = "http://localhost:8080/pessoa/";
     private usuarioLogado: UsuarioLogado = new UsuarioLogado();
 
     constructor(
@@ -33,7 +34,7 @@ export class PessoaService {
         this.construirHeader();
         return this._http
             .post(
-                this._url + "salvar",
+                uriBase.uri + "pessoa/salvar",
                 pessoa,
                 this._options)
             .pipe(
@@ -45,7 +46,7 @@ export class PessoaService {
         this.construirHeader();
         return this._http
             .post(
-                this._url + "atualizarPessoaVendedor",
+                uriBase.uri + "pessoa/atualizarPessoaVendedor",
                 pessoa,
                 this._options)
             .pipe(
@@ -56,7 +57,7 @@ export class PessoaService {
     public getPessoaPorIdUsuario(idUsuario: string): Observable<Pessoa> {
         this.construirHeader();
         return this._http
-            .get(this._url + 'usuario/'+ idUsuario,
+            .get(uriBase.uri + 'pessoa/usuario/'+ idUsuario,
                 this._options)
             .pipe(
                 map(res => res.json())
@@ -66,7 +67,7 @@ export class PessoaService {
     public getPessoa(idPessoa: string): Observable<Pessoa> {
         this.construirHeader();
         return this._http
-            .get(this._url + idPessoa,
+            .get(uriBase.uri + 'pessoa/'+idPessoa,
                 this._options)
             .pipe(
                 map(res => res.json())
@@ -76,7 +77,7 @@ export class PessoaService {
     public listarPessoa() {
         this.construirHeader();
         return this._http
-            .get(this._url,
+            .get(uriBase.uri + 'pessoa/',
                 this._options)
             .pipe(
                 map(res => res.json())

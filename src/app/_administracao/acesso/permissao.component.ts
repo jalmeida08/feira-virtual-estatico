@@ -56,6 +56,6 @@ export class PermissaoComponent implements OnInit {
     }
     
     ngOnInit(): void {
-        this._dataService.checarAcessoAutorizado(Acessos.ADM01);
+        // this._dataService.checarAcessoAutorizado(Acessos.ADM01);
     }
 }

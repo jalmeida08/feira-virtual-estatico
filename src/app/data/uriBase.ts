@@ -1,3 +1,3 @@
 export class uriBase{
-    static uri: string = 'http://localhost:8080/'
+    static uri: string = 'https://secure-garden-21137.herokuapp.com/'
 }

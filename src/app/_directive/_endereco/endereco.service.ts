@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Endereco } from '../../_model/endereco';
 import { CookieService } from 'ngx-cookie-service';
+import { uriBase } from '../../data/uriBase';
 
 @Injectable()
 export class EnderecoService {
 
-    private _url: string = 'http://localhost:8080/endereco/';
+    // private _url: string = 'http://localhost:8080/endereco/';
     private _headers: Headers;
     private _options: RequestOptions;
 
@@ -37,7 +38,7 @@ export class EnderecoService {
         this.construirHeader();
         return this._http
             .post(
-                this._url,
+                uriBase.uri + 'endereco/',
                 endereco,
                 this._options)
             .pipe(
